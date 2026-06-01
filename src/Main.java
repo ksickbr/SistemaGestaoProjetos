@@ -28,29 +28,20 @@ public class Main {
             System.out.println("4 - Listar Projetos");
             System.out.println("5 - Cadastrar Equipe");
             System.out.println("6 - Listar Equipes");
-            System.out.println("7 - Cadastrar Tarefa");
-            System.out.println("8 - Listar Tarefas");
-            System.out.println("9 - Relatório Geral");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
-            opcao = scanner.nextInt();
-            scanner.nextLine();
 
             switch (opcao) {
 
                 case 1:
 
-                    System.out.print("Nome: ");
-                    String nome = scanner.nextLine();
 
                     System.out.print("CPF: ");
                     String cpf = scanner.nextLine();
 
-                    System.out.print("Email: ");
                     String email = scanner.nextLine();
 
-                    Usuario usuario = new Usuario(nome, cpf, email);
 
                     usuarios.add(usuario);
 
@@ -71,9 +62,7 @@ public class Main {
                         for (Usuario u : usuarios) {
 
                             System.out.println(
-                                    "Nome: " + u.getNome()
                                             + " | CPF: " + u.getCpf()
-                                            + " | Email: " + u.getEmail()
                             );
 
                         }
@@ -87,16 +76,13 @@ public class Main {
                     System.out.print("Nome do projeto: ");
                     String nomeProjeto = scanner.nextLine();
 
-                    System.out.print("Descrição: ");
                     String descricaoProjeto = scanner.nextLine();
 
-                    System.out.print("Status: ");
                     String statusProjeto = scanner.nextLine();
 
                     Projeto projeto = new Projeto(
                             nomeProjeto,
                             descricaoProjeto,
-                            statusProjeto
                     );
 
                     projetos.add(projeto);
@@ -176,12 +162,10 @@ public class Main {
                     System.out.print("Título da tarefa: ");
                     String titulo = scanner.nextLine();
 
-                    System.out.print("Status da tarefa: ");
                     String statusTarefa = scanner.nextLine();
 
                     Tarefa tarefa = new Tarefa(
                             titulo,
-                            statusTarefa
                     );
 
                     tarefas.add(tarefa);
@@ -190,7 +174,6 @@ public class Main {
 
                     break;
 
-                case 8:
 
                     System.out.println("\n=== TAREFAS CADASTRADAS ===");
 
@@ -213,7 +196,6 @@ public class Main {
 
                     break;
 
-                case 9:
 
                     System.out.println("\n=== RELATÓRIO GERAL ===");
 
