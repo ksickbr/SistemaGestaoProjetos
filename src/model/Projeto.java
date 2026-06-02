@@ -3,16 +3,28 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que representa um projeto no sistema.
+ * Um projeto possui dados básicos, gerente responsável e equipes alocadas.
+ */
 public class Projeto {
 
+    // Atributos principais do projeto
     private String nome;
     private String descricao;
     private String dataInicio;
     private String dataTerminoPrevista;
     private String status;
+
+    // Usuário responsável pela gerência do projeto
     private Usuario gerenteResponsavel;
+
+    // Lista de equipes vinculadas ao projeto
     private List<Equipe> equipes;
 
+    /**
+     * Construtor simplificado, mantido para compatibilidade com versões anteriores.
+     */
     public Projeto(String nome, String descricao, String status) {
         this.nome = nome;
         this.descricao = descricao;
@@ -23,6 +35,9 @@ public class Projeto {
         this.equipes = new ArrayList<>();
     }
 
+    /**
+     * Construtor completo utilizado no cadastro de projetos.
+     */
     public Projeto(String nome, String descricao, String dataInicio, String dataTerminoPrevista, String status, Usuario gerenteResponsavel) {
         this.nome = nome;
         this.descricao = descricao;
@@ -33,6 +48,9 @@ public class Projeto {
         this.equipes = new ArrayList<>();
     }
 
+    /**
+     * Adiciona uma equipe ao projeto.
+     */
     public void adicionarEquipe(Equipe equipe) {
         this.equipes.add(equipe);
     }

@@ -7,12 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe principal do sistema.
+ * Responsável por exibir o menu, receber os dados digitados pelo usuário
+ * e executar as principais funcionalidades do Sistema de Gestão de Projetos.
+ */
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
+        // Listas utilizadas para armazenar os dados cadastrados durante a execução do programa
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<Projeto> projetos = new ArrayList<>();
         ArrayList<Equipe> equipes = new ArrayList<>();
@@ -20,6 +26,7 @@ public class Main {
 
         int opcao;
 
+        // Estrutura de repetição responsável por manter o menu ativo até o usuário escolher sair
         do {
 
             System.out.println("\n=== SISTEMA DE GESTÃO DE PROJETOS ===");
@@ -43,6 +50,7 @@ public class Main {
 
                 case 1:
 
+                    // Cadastro completo de usuário conforme os requisitos do projeto
                     System.out.print("Nome completo: ");
                     String nomeCompleto = scanner.nextLine();
 
@@ -82,6 +90,7 @@ public class Main {
 
                 case 2:
 
+                    // Listagem dos usuários cadastrados
                     System.out.println("\n=== USUÁRIOS CADASTRADOS ===");
 
                     if (usuarios.isEmpty()) {
@@ -109,6 +118,7 @@ public class Main {
 
                 case 3:
 
+                    // Para cadastrar um projeto, é necessário existir pelo menos um usuário para ser gerente
                     if (usuarios.isEmpty()) {
                         System.out.println("Cadastre pelo menos um usuário antes de cadastrar um projeto.");
                         break;
@@ -159,6 +169,7 @@ public class Main {
 
                 case 4:
 
+                    // Listagem dos projetos cadastrados, incluindo gerente e equipes alocadas
                     System.out.println("\n=== PROJETOS CADASTRADOS ===");
 
                     if (projetos.isEmpty()) {
@@ -199,16 +210,14 @@ public class Main {
 
                 case 5:
 
+                    // Cadastro de equipe
                     System.out.print("Nome da equipe: ");
                     String nomeEquipe = scanner.nextLine();
 
                     System.out.print("Descrição da equipe: ");
                     String descricaoEquipe = scanner.nextLine();
 
-                    Equipe equipe = new Equipe(
-                            nomeEquipe,
-                            descricaoEquipe
-                    );
+                    Equipe equipe = new Equipe(nomeEquipe, descricaoEquipe);
 
                     equipes.add(equipe);
 
@@ -218,6 +227,7 @@ public class Main {
 
                 case 6:
 
+                    // Listagem das equipes cadastradas e seus membros
                     System.out.println("\n=== EQUIPES CADASTRADAS ===");
 
                     if (equipes.isEmpty()) {
@@ -248,6 +258,7 @@ public class Main {
 
                 case 7:
 
+                    // Vincula um usuário cadastrado a uma equipe cadastrada
                     if (equipes.isEmpty() || usuarios.isEmpty()) {
                         System.out.println("É necessário ter pelo menos uma equipe e um usuário cadastrados.");
                         break;
@@ -286,6 +297,7 @@ public class Main {
 
                 case 8:
 
+                    // Aloca uma equipe cadastrada a um projeto cadastrado
                     if (projetos.isEmpty() || equipes.isEmpty()) {
                         System.out.println("É necessário ter pelo menos um projeto e uma equipe cadastrados.");
                         break;
@@ -324,6 +336,7 @@ public class Main {
 
                 case 9:
 
+                    // Cadastro de tarefa vinculada a um responsável e a um projeto
                     if (usuarios.isEmpty() || projetos.isEmpty()) {
                         System.out.println("É necessário ter pelo menos um usuário e um projeto cadastrados.");
                         break;
@@ -383,6 +396,7 @@ public class Main {
 
                 case 10:
 
+                    // Listagem das tarefas cadastradas
                     System.out.println("\n=== TAREFAS CADASTRADAS ===");
 
                     if (tarefas.isEmpty()) {
@@ -421,6 +435,7 @@ public class Main {
 
                 case 11:
 
+                    // Relatório geral de acompanhamento do sistema
                     System.out.println("\n=== RELATÓRIO GERAL ===");
 
                     System.out.println("Usuários cadastrados: " + usuarios.size());
@@ -467,6 +482,10 @@ public class Main {
 
     }
 
+    /**
+     * Lê um número inteiro digitado pelo usuário.
+     * Caso o usuário digite um valor inválido, solicita nova entrada.
+     */
     private static int lerInteiro(Scanner scanner) {
 
         while (true) {
@@ -485,10 +504,16 @@ public class Main {
 
     }
 
+    /**
+     * Verifica se o índice informado pelo usuário existe dentro de uma lista.
+     */
     private static boolean indiceValido(int indice, int tamanhoLista) {
         return indice >= 0 && indice < tamanhoLista;
     }
 
+    /**
+     * Exibe os usuários cadastrados com numeração para seleção no menu.
+     */
     private static void listarUsuariosComIndice(ArrayList<Usuario> usuarios) {
 
         for (int i = 0; i < usuarios.size(); i++) {
@@ -504,6 +529,9 @@ public class Main {
 
     }
 
+    /**
+     * Exibe os projetos cadastrados com numeração para seleção no menu.
+     */
     private static void listarProjetosComIndice(ArrayList<Projeto> projetos) {
 
         for (int i = 0; i < projetos.size(); i++) {
@@ -519,6 +547,9 @@ public class Main {
 
     }
 
+    /**
+     * Exibe as equipes cadastradas com numeração para seleção no menu.
+     */
     private static void listarEquipesComIndice(ArrayList<Equipe> equipes) {
 
         for (int i = 0; i < equipes.size(); i++) {
@@ -533,6 +564,9 @@ public class Main {
 
     }
 
+    /**
+     * Retorna os nomes dos membros de uma equipe em formato de texto.
+     */
     private static String nomesMembros(List<Usuario> membros) {
 
         StringBuilder nomes = new StringBuilder();
@@ -551,6 +585,9 @@ public class Main {
 
     }
 
+    /**
+     * Retorna os nomes das equipes alocadas a um projeto em formato de texto.
+     */
     private static String nomesEquipes(List<Equipe> equipes) {
 
         StringBuilder nomes = new StringBuilder();
@@ -569,6 +606,9 @@ public class Main {
 
     }
 
+    /**
+     * Conta quantas tarefas existem para determinado status.
+     */
     private static int contarTarefasPorStatus(ArrayList<Tarefa> tarefas, String... statusBuscados) {
 
         int total = 0;

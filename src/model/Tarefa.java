@@ -1,14 +1,26 @@
 package model;
 
+/**
+ * Classe que representa uma tarefa do projeto.
+ * Cada tarefa pode estar vinculada a um projeto e a um usuário responsável.
+ */
 public class Tarefa {
 
+    // Atributos principais da tarefa
     private String titulo;
     private String descricao;
     private String prazo;
     private String status;
+
+    // Usuário responsável pela execução da tarefa
     private Usuario responsavel;
+
+    // Projeto ao qual a tarefa pertence
     private Projeto projeto;
 
+    /**
+     * Construtor simplificado, mantido para compatibilidade com versões anteriores.
+     */
     public Tarefa(String titulo, String status) {
         this.titulo = titulo;
         this.descricao = "";
@@ -18,6 +30,9 @@ public class Tarefa {
         this.projeto = null;
     }
 
+    /**
+     * Construtor completo utilizado no cadastro de tarefas.
+     */
     public Tarefa(String titulo, String descricao, String prazo, String status, Usuario responsavel, Projeto projeto) {
         this.titulo = titulo;
         this.descricao = descricao;
@@ -27,6 +42,9 @@ public class Tarefa {
         this.projeto = projeto;
     }
 
+    /**
+     * Atualiza o status da tarefa.
+     */
     public void atualizarStatus(String novoStatus) {
         this.status = novoStatus;
     }

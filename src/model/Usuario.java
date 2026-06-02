@@ -1,7 +1,12 @@
 package model;
 
+/**
+ * Classe que representa um usuário do sistema.
+ * Um usuário pode ter perfil de administrador, gerente ou colaborador.
+ */
 public class Usuario {
 
+    // Atributos principais do usuário
     private String nomeCompleto;
     private String cpf;
     private String email;
@@ -10,6 +15,9 @@ public class Usuario {
     private String senha;
     private String perfil;
 
+    /**
+     * Construtor simplificado, mantido para compatibilidade com versões anteriores do sistema.
+     */
     public Usuario(String nomeCompleto, String cpf, String email) {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
@@ -20,6 +28,9 @@ public class Usuario {
         this.perfil = "";
     }
 
+    /**
+     * Construtor completo utilizado no cadastro de usuários.
+     */
     public Usuario(String nomeCompleto, String cpf, String email, String cargo, String login, String senha, String perfil) {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
@@ -34,6 +45,9 @@ public class Usuario {
         return nomeCompleto;
     }
 
+    /**
+     * Método mantido para facilitar chamadas anteriores que usavam getNome().
+     */
     public String getNome() {
         return nomeCompleto;
     }
